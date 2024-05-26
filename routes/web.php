@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\productsController;
-
+use App\Http\Controllers\CreateProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,9 @@ use App\Http\Controllers\productsController;
 
 Route::get('/', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/category', [categoryController::class, 'index'])->name('category');
+
 Route::get('/products', [productsController::class, 'index'])->name('products');
-
-
+Route::get('/create-product', [CreateProductController::class, 'index'])->name('create-product');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

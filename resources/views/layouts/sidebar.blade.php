@@ -41,13 +41,7 @@
 					<li class="nav-item">
 					    <a href="{{ route('dashboard') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
-					<li class="nav-item pcoded-hasmenu">
-					    <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
-					    <ul class="pcoded-submenu">
-					        <li><a href="#" target="_blank">Admin</a></li>
-					        <li><a href="#" target="_blank">User</a></li>
-					    </ul>
-					</li>
+				
 					<li class="nav-item pcoded-menu-caption">
 						<label>Products</label>
 					</li>
@@ -55,6 +49,8 @@
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Products</span></a>
 						<ul class="pcoded-submenu">
 							<li><a href="{{ route('products') }}">Products List</a></li>
+							<li><a href="{{ route('create-product') }}">Create Products</a></li>
+
 						</ul>
 					</li>
                     <li class="nav-item pcoded-hasmenu">

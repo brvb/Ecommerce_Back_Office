@@ -33,7 +33,10 @@
         <div class="card-header">
             <div style="display: flex;justify-content: space-between;">
                 <h5><i class="feather icon-box"></i> Products</h5>
-                <button type="button" class="btn btn-primary mx-sm-5">Create Products</button>
+                <a href="{{ route("create-product") }}">
+                    <button type="button" class="btn btn-primary mx-sm-5">Create Products</button>
+                </a>
+                
             </div>
             <div class="card-header-right">
                 <div class="btn-group card-option">
@@ -161,8 +164,8 @@
                                                 </div>
                                                 <hr>
                                                 <div class="modal-body text-right">
-                                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal" aria-label="Close">Go back</button>
-                                                        <button type="button" class="btn  btn-primary">Save</button>
+                                                    <button type="button" class="btn  btn-secondary" data-dismiss="modal" aria-label="Close">Go back</button>
+                                                    <button type="button" class="btn  btn-primary">Save</button>
                                                 </div>
                                             </div>
                                         </div>
