@@ -58,35 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Variants</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Size">Size</label>
-                                    <input type="text" class="form-control" id="Size" value="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Color">Color</label>
-                                    <input type="text" class="form-control" id="Color" value="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Weight">Weight</label>
-                                    <input type="text" class="form-control" id="Weight" value="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -94,18 +66,18 @@
                     </div>
                     <div class="card-body">
                     <div class="row">
-							<div class="col-md-4 col-sm-12">
-								<ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-									<li><a class="nav-link text-left active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="feather icon-box"></i> Restock</a></li>
-									<li><a class="nav-link text-left" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-car"></i> Shipping</a></li>
-									<li><a class="nav-link text-left" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-globe"></i> Global Delivery</a></li>
-									<li><a class="nav-link text-left" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-sliders-h"></i> Attributes</a></li>
-								</ul>
-							</div>
-							<div class="col-md-8 col-sm-12">
-								<div class="tab-content" id="v-pills-tabContent">
-									<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-										<h5 >Options</h5>
+                            <div class="col-md-4 col-sm-12">
+                                <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <li><a class="nav-link text-left active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="feather icon-box"></i> Restock</a></li>
+                                    <li><a class="nav-link text-left" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-car"></i> Shipping</a></li>
+                                    <li><a class="nav-link text-left" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-globe"></i> Global Delivery</a></li>
+                                    <li><a class="nav-link text-left" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-sliders-h"></i> Attributes</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-8 col-sm-12">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                        <h5 >Options</h5>
                                         <div class="row">
                                             <div class="col-10">
                                                 <div class="form-group text-left">
@@ -123,9 +95,9 @@
                                                 </div>
                                             </div>
                                         </div>
-									</div>
-									<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-										<h5>Shipping Type</h5>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                        <h5>Shipping Type</h5>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-check">
@@ -143,8 +115,8 @@
                                                 </div>
                                             </div>
                                         </div>
-									</div>
-									<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                         <h5>Global Delivery</h5>
                                         <div class="row">
                                             <div class="col-12">
@@ -172,7 +144,7 @@
                                             </div>
                                         </div>
                                     </div>
-									<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                         <h5>Attributes</h5>
                                         <div class="row">
                                             <div class="col-12">
@@ -207,10 +179,10 @@
                                                 </div>
                                             </div>
                                         </div>
-									</div>
-								</div>
-							</div>
-						</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,17 +229,21 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group text-left">
-                                    <label class="floating-label" for="Category">Category</label>
-                                    <input type="text" class="form-control" id="Category"  value="">
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <label class="floating-label" for="Category">Category</label>
+                                        <a href="{{ route('category') }}" class="text-primary mb-1">ADD NEW CATEGORY</a> 
+                                    </div>
+                                    <select class="form-control" id="Category">
+                                        <option value="">Select the category</option>
+                                        @foreach ($categories as $category)
+                                            <option id="{{ $category->id }}" value="{{ $category->title}}">{{ $category->title}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group text-left">
-                                    <div style="display: flex;justify-content: space-between;">
-                                        <label class="floating-label" for="Sale">Collection</label>
-                                        <a href="{{ route('category') }}" class="text-primary mb-1">ADD NEW CATEGORY</a> 
-                                    </div>
-                                    
+                                    <label class="floating-label" for="Sale">Collection</label>
                                     <input type="text" class="form-control" id="Sale"  value="">
                                 </div>
                             </div>
@@ -278,6 +254,48 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Variants</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Size">Size</label>
+                                    <input type="text" class="form-control" id="Size" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Color">Color</label>
+                                    <input type="text" class="form-control" id="Color" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Weight">Weight</label>
+                                    <input type="text" class="form-control" id="Weight" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-right">
+                        <button type="button" class="btn  btn-primary" wire:click="save()">Save Product</button>
+                        <button type="button" class="btn  btn-outline-secondary">Reset</button>
                     </div>
                 </div>
             </div>

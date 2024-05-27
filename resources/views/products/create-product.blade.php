@@ -10,7 +10,9 @@
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-box"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Products</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('products') }}">Products</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Create</a></li>
+
                 </ul>
             </div>
         </div>

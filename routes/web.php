@@ -6,6 +6,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CreateProductController;
+use App\Livewire\Products\CreateProduct;
 
 /*
 |--------------------------------------------------------------------------
