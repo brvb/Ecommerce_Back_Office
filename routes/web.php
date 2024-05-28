@@ -6,8 +6,10 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\promotionsController;
+
 use App\Livewire\Category\CreateCategory;
 use App\Http\Controllers\usersController;
+
 use App\Livewire\Users\users;
 
 /*
@@ -35,7 +37,7 @@ Route::get('/category', [categoryController::class, 'index'])->name('category');
 Route::get('/create-category', [categoryController::class, 'indexCreate'])->name('create-category');
 
 Route::get('/products', [productsController::class, 'index'])->name('products');
-Route::get('/create-product', [CreateProductController::class, 'index'])->name('create-product');
+Route::get('/create-product', [productsController::class, 'indexCreate'])->name('create-product');
 
 Route::get('/users', [usersController::class, 'index'])->name('users');
 Route::get('/create-users', [usersController::class, 'indexCrate'])->name('create-users');
