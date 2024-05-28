@@ -9,20 +9,20 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="floating-label" for="Title">Title</label>
-                            <input type="text" class="form-control" id="Title" aria-describedby="emailHelp" placeholder="Title">
+                            <label class="floating-label" for="Title">Name</label>
+                            <input type="text" class="form-control" id="Title" aria-describedby="emailHelp" placeholder="Name">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="floating-label" for="description">Description</label>
-                            <input type="text" class="form-control" id="description" placeholder="Description">
+                            <label class="floating-label" for="description">Email</label>
+                            <input type="text" class="form-control" id="description" placeholder="Email">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="floating-label" for="Status">Status</label>
-                            <input type="text" class="form-control" id="Status" placeholder="Status">
+                            <label class="floating-label" for="Status">Função</label>
+                            <input type="text" class="form-control" id="Status" placeholder="Função">
                         </div>
                     </div>
                 </div>
@@ -33,9 +33,9 @@
         <div class="card-header">
             <div style="display: flex;justify-content: space-between;">
                 
-                <h5><i class="fas fa-layer-group"></i> Categorie</h5>
-                <a href="{{ route('create-category') }}">
-                <button type="button" class="btn btn-primary mx-sm-5">Create Categories</button>
+                <h5><i class="fas fa-layer-group"></i> User</h5>
+                <a href="{{ route('create-users') }}">
+                <button type="button" class="btn btn-primary mx-sm-5">Add User</button>
                 </a>
             </div>
             <div class="card-header-right">
@@ -67,13 +67,12 @@
                                 All
                             </th>
                             <th></th>
-                            <th>TOTAL PRODUCTS</th>
-                            <th class="text-center">STATUS</th>
+                            <th>Email</th>
                             <th class="text-center">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($users as $user)
                             <tr>
                                 <td>
                                     <div class="chk-option">
@@ -86,53 +85,41 @@
                                         <div class="d-flex">
                                             <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
                                             <div class="d-inline-block">
-                                                <h6>{{ $category->title}}</h6>
-                                                <p class="text-muted m-b-0">{{ $category->description}}</p>
+                                                <h6>{{ $user->name}}</h6>
+                                                <p class="text-muted m-b-0">FUNÇÃO</p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td></td>
-                                <td>26</td>
-                                @if($category->status == "Active")
-                                <td class="text-center"><label class="badge badge-light-success">Active</label></td>
-                                @else
-                                <td class="text-center"><label class="badge badge-light-danger">Inactive</label></td>
-                                @endif
+                                <td>{{ $user->email}}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{ $category->id }}"><i class="fas fa-pen"></i></button>
-                                    <div class="modal fade bd-example-modal-lg{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{ $user->id }}"><i class="fas fa-pen"></i></button>
+                                    <div class="modal fade bd-example-modal-lg{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title h4" id="myLargeModalLabel">EDIT CATEGORIES</h5>
+                                                    <h5 class="modal-title h4" id="myLargeModalLabel">EDIT USERS</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <div class="modal-body" id="{{ $category->id }}">
+                                                <div class="modal-body" id="{{ $user->id }}">
                                                     <div class="row">
                                                         <div class="col-9">
                                                             <div class="form-group text-left">
-                                                                <label class="floating-label" for="Titulo">Título</label>
-                                                                <input type="text" class="form-control" id="Titulo" aria-describedby="emailHelp" value="{{ $category->title}}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group text-left" style="display: flex;flex-direction: column;">
-                                                                <label class="floating-label" for="Status">Status</label>
-                                                                <select class="form-control custom-select" id="inputGroupSelect03">
-                                                                    <option value="{{ $category->status}}">{{ $category->status}}</option>
-                                                                    @if($category->status == "Active")
-                                                                    <option value="Inactive">Inactive</option>
-                                                                    @else
-                                                                    <option value="{{ $category->status}}">{{ $category->status}}</option>
-                                                                    @endif
-                                                                </select>
+                                                                <label class="floating-label" for="Titulo">Name</label>
+                                                                <input type="text" class="form-control" id="Titulo" aria-describedby="emailHelp" value="{{ $user->name}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group text-left">
-                                                                <label class="floating-label" for="Paragrafo">Parágrafo</label>
-                                                                <input type="text" class="form-control" id="Paragrafo" value="{{ $category->description}}">
+                                                                <label class="floating-label" for="Paragrafo">Email</label>
+                                                                <input type="text" class="form-control" id="Paragrafo" value="{{ $user->email}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group text-left">
+                                                                <label class="floating-label" for="Paragrafo">Função</label>
+                                                                <input type="text" class="form-control" id="Paragrafo" value="Função">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">

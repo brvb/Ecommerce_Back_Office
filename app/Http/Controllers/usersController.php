@@ -12,4 +12,10 @@ class usersController extends Controller
         //dd("Controller");
         return view('users.index');
     }
+
+    public function add()
+    {
+        //dd("Controller");
+        return view('users.create-users');
+    }
 }

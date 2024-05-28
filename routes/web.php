@@ -40,6 +40,11 @@ Route::get('/create-category', [CreateCategoryController::class, 'index'])->name
 Route::get('/products', [productsController::class, 'index'])->name('products');
 Route::get('/create-product', [CreateProductController::class, 'index'])->name('create-product');
 
+Route::get('/users', [usersController::class, 'index'])->name('users');
+Route::get('/create-users', [usersController::class, 'add'])->name('create-users');
+
+Route::get('/promotions', [promotionsController::class, 'index'])->name('promotions');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
