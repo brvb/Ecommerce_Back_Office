@@ -49,6 +49,8 @@ class CreatePromotion extends Component
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
         ]);
+        
+        $this->reset(['titulo', 'status', 'description', 'percentage', 'start_date', 'end_date', 'hasSelectProduct']);
     }
 
     public function render()
