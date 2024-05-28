@@ -116,7 +116,7 @@
                     <li class="nav-item pcoded-hasmenu">
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-users-cog"></i></span><span class="pcoded-mtext">Users</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="#">All Users</a></li>
+							<li><a href="{{ route('users') }}">All Users</a></li>
                             <li><a href="#">Roles</a></li>
                             <li><a href="#">Permission</a></li>
 						</ul>
