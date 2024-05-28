@@ -9,6 +9,8 @@ use App\Http\Controllers\CreateProductController;
 use App\Livewire\Products\CreateProduct;
 use App\Http\Controllers\CreateCategoryController;
 use App\Livewire\Category\CreateCategory;
+use App\Http\Controllers\usersController;
+use App\Livewire\Users\users;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,8 @@ Route::get('/create-category', [CreateCategoryController::class, 'index'])->name
 
 Route::get('/products', [productsController::class, 'index'])->name('products');
 Route::get('/create-product', [CreateProductController::class, 'index'])->name('create-product');
+
+Route::get('/users', [usersController::class, 'index'])->name('users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
