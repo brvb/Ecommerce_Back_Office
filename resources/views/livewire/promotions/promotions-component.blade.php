@@ -32,9 +32,9 @@
     <div class="card table-card">
         <div class="card-header">
             <div style="display: flex;justify-content: space-between;">
-                <h5><i class="feather icon-box"></i> Products</h5>
-                <a href="{{ route("create-product") }}">
-                    <button type="button" class="btn btn-primary mx-sm-5">Create Products</button>
+                <h5><i class="feather icon-box"></i> Promotion</h5>
+                <a href="{{ route("create-promotion") }}">
+                    <button type="button" class="btn btn-primary mx-sm-5">Create Promotion</button>
                 </a>
                 
             </div>
@@ -102,7 +102,7 @@
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title h4" id="myLargeModalLabel">EDIT PRODUCTS</h5>
+                                                    <h5 class="modal-title h4" id="myLargeModalLabel">EDIT PROMOTION</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body" id="{{ $promotion->id}}">
