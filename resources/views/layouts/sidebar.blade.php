@@ -63,9 +63,8 @@
                     <li class="nav-item pcoded-hasmenu">
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-euro-sign"></i></span><span class="pcoded-mtext">Promotions</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="#">Promotions List</a></li>
-							<li><a href="#">Add Promotions</a></li>
-							<li><a href="#">Promotions Details</a></li>
+							<li><a href="{{ route('promotions') }}">Promotions List</a></li>
+							<li><a href="{{ route('create-promotion') }}">Add Promotions</a></li>
 						</ul>
 					</li>
                     <li class="nav-item pcoded-hasmenu">
@@ -117,8 +116,8 @@
                     <li class="nav-item pcoded-hasmenu">
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-users-cog"></i></span><span class="pcoded-mtext">Users</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="#">All Users</a></li>
-                            <li><a href="#">Roles</a></li>
+							<li><a href="{{ route('users') }}">All Users</a></li>
+                            <li><a href="{{ route('create-users') }}">Create Users</a></li>
                             <li><a href="#">Permission</a></li>
 						</ul>
 					</li>

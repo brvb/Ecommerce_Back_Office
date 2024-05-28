@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class promotionsController extends Controller
 {
     public function indexCreate()
     {
-        return view('category.create-category');
+        return view('promotions.create-promotion');
     }
     public function index()
     {
-        return view('category.index');
+        return view('promotions.index');
     }
 }
