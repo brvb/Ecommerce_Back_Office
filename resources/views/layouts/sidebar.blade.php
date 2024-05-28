@@ -57,6 +57,7 @@
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-layer-group"></i></span><span class="pcoded-mtext">Category</span></a>
 						<ul class="pcoded-submenu">
 							<li><a href="{{ route('category') }}">Category  List</a></li>
+							<li><a href="{{ route('create-category') }}">Create Category</a></li>
 						</ul>
 					</li>
                     <li class="nav-item pcoded-hasmenu">

@@ -34,7 +34,9 @@
             <div style="display: flex;justify-content: space-between;">
                 
                 <h5><i class="fas fa-layer-group"></i> Categorie</h5>
-                <button type="button" class="btn btn-primary mx-sm-5">Create Categorie</button>
+                <a href="{{ route('create-category') }}">
+                <button type="button" class="btn btn-primary mx-sm-5">Create Categories</button>
+                </a>
             </div>
             <div class="card-header-right">
                 <div class="btn-group card-option">
