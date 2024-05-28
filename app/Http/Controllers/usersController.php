@@ -13,7 +13,7 @@ class usersController extends Controller
         return view('users.index');
     }
 
-    public function add()
+    public function indexCrate()
     {
         //dd("Controller");
         return view('users.create-users');
