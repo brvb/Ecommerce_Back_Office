@@ -13,7 +13,7 @@ class UsersComponent extends Component
     public function render()
     {
         //dd("LIVEWIRE RENDER");
-        $categories = Category::all();
+        $categories = Users::all();
 
         return view('livewire.users.users-component', compact('categories'));
     }
