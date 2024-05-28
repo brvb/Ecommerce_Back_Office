@@ -63,9 +63,8 @@
                     <li class="nav-item pcoded-hasmenu">
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-euro-sign"></i></span><span class="pcoded-mtext">Promotions</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="#">Promotions List</a></li>
+							<li><a href="{{ route('promotions') }}">Promotions List</a></li>
 							<li><a href="#">Add Promotions</a></li>
-							<li><a href="#">Promotions Details</a></li>
 						</ul>
 					</li>
                     <li class="nav-item pcoded-hasmenu">

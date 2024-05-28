@@ -7,8 +7,6 @@ use Livewire\Component;
 use App\Models\Products;
 use App\Models\Category;
 
-
-
 class CreateProduct extends Component
 {
     public function save()
