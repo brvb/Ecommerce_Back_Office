@@ -16,6 +16,7 @@ class CreatePromotion extends Component
     public $percentage = "";
     public $start_date = "";
     public $end_date = "";
+    public $showSuccessMessage = false;
 
     public function selectProdPromotion($productReference)
     {
@@ -40,16 +41,43 @@ class CreatePromotion extends Component
     }
     public function save()
     {
+        $this->validate([
+            'titulo' => 'required|string|max:255',
+            'status' => 'required|string|max:50',
+            'description' => 'required|string|max:1000',
+            'percentage' => 'required|numeric|min:0|max:100',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'hasSelectProduct' => 'required|array|min:1',
+        ]);
+
+        $relatedProducts = [];
+        foreach ($this->hasSelectProduct as $product) {
+            Products::where('id', $product['id'])
+                ->update([
+                    'group_promotion' => 'True',
+                    'sale' => $product['sale'],
+                ]);
+    
+            $relatedProducts[] = [
+                'id' => $product['id'],
+                'reference' => $product['reference']
+            ];
+        }
         // dd($this->description,$this->status,$this->titulo,$this->percentage,$this->start_date,$this->end_date);
-        $promotions = promotions::create([
+        // dd(json_encode($relatedProducts));
+        promotions::create([
             'title' => $this->titulo,
             'status' => $this->status,
             'description' => $this->description,
             'sale' => $this->percentage,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
+            'related_products' => json_encode($relatedProducts),
         ]);
+
         
+        $this->showSuccessMessage = true;
         $this->reset(['titulo', 'status', 'description', 'percentage', 'start_date', 'end_date', 'hasSelectProduct']);
     }
 

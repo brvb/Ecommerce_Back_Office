@@ -12,21 +12,31 @@
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="Titulo">Título</label>
                                     <input type="text" class="form-control" id="Titulo"  value="" wire:model.defer='titulo'>
+                                    @error('titulo')
+                                        <span class="text-danger">O campo título da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group text-left">
                                     <label for="status">Select Category Status</label>
                                     <select class="form-control" id="status" name="status" wire:model.defer='status'>
+                                        <option value="">Select Status</option>
                                         <option value="ativo">Ativo</option>
                                         <option value="inativo">Inativo</option>
                                     </select>
+                                    @error('status')
+                                        <span class="text-danger">O campo status da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="Paragrafo">Description</label>
                                     <textarea class="form-control" id="Paragrafo" style="min-height: 140px;" wire:model.defer='description'></textarea>
+                                    @error('description')
+                                        <span class="text-danger">O campo descrição da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -49,6 +59,9 @@
                                             <option value="{{$product->reference}}">{{$product->reference}} | {{$product->product_name}}</option>
                                         @endforeach
                                     </select>
+                                    @error('hasSelectProduct')
+                                        <span class="text-danger">O campo select product da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                             @if ($hasSelectProduct)
@@ -122,18 +135,27 @@
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="Price">Percentage</label>
                                     <input type="text" class="form-control" id="Price" value=""  wire:model.defer='percentage'>
+                                    @error('percentage')
+                                        <span class="text-danger">O campo porcentagem da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="StartDate">Start Date</label>
                                     <input type="date" class="form-control" id="StartDate"  value="" wire:model.defer='start_date'>
+                                    @error('start_date')
+                                        <span class="text-danger">O campo Inicio da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="EndDate">End Date</label>
                                     <input type="date" class="form-control" id="EndDate"  value="" wire:model.defer='end_date'>
+                                     @error('end_date')
+                                        <span class="text-danger">O campo fim da promoçao é obrigatório.</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -154,5 +176,12 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div style="z-index: 999; color:white; position:fixed;">
+        @if ($showSuccessMessage)
+            <div class="alert alert-success" role="alert" id="successMessage">
+                Produto adicionado com sucesso!
+            </div>
+        @endif
     </div>
 </div>
