@@ -20,6 +20,7 @@ class Products extends Model
         'barcode',
         'price',
         'stock',
+        'group_promotion',
         'sale',
         'location',
         'status',
