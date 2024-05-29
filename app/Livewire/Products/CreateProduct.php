@@ -7,7 +7,6 @@ use App\Models\Products;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-
 class CreateProduct extends Component
 {
     use WithFileUploads;
@@ -26,7 +25,6 @@ class CreateProduct extends Component
 
     public function save()
     {
-
         // Adiciona regras de validação
         $this->validate([
             'reference' => 'required',
@@ -55,11 +53,14 @@ class CreateProduct extends Component
         ]);
 
         $this->showSuccessMessage = true;
+
+        return redirect()->route('create-product')->with('message', 'Produto criado com sucesso!')->with('status', 'success');
     }
 
     public function render()
     {
         $categories = Category::all();
+
         return view('livewire.products.create-product', compact('categories'));
     }
 }
