@@ -70,7 +70,7 @@
                     <li class="nav-item pcoded-hasmenu">
 						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fas fa-tasks"></i></span><span class="pcoded-mtext">Order</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="#">Order List</a></li>
+							<li><a href="{{ route('order') }}">Order List</a></li>
 							<li><a href="#">Add Order</a></li>
 							<li><a href="#">Order Details</a></li>
 						</ul>

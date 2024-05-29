@@ -6,6 +6,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\promotionsController;
+use App\Http\Controllers\orderController;
 
 use App\Livewire\Category\CreateCategory;
 use App\Http\Controllers\usersController;
@@ -39,12 +40,13 @@ Route::get('/create-category', [categoryController::class, 'indexCreate'])->name
 Route::get('/products', [productsController::class, 'index'])->name('products');
 Route::get('/create-product', [productsController::class, 'indexCreate'])->name('create-product');
 
-Route::get('/users', [usersController::class, 'index'])->name('users');
-Route::get('/create-users', [usersController::class, 'indexCrate'])->name('create-users');
-
 Route::get('/promotions', [promotionsController::class, 'index'])->name('promotions');
 Route::get('/create-promotion', [promotionsController::class, 'indexCreate'])->name('create-promotion');
 
+Route::get('/order', [orderController::class, 'index'])->name('order');
+
+Route::get('/users', [usersController::class, 'index'])->name('users');
+Route::get('/create-users', [usersController::class, 'indexCrate'])->name('create-users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
