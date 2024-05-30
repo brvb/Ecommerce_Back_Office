@@ -3,12 +3,14 @@
 namespace App\Livewire\Promotions;
 
 use Livewire\Component;
-use App\Models\products;
-use App\Models\promotions;
-
+use Livewire\WithFileUploads;
+use App\Models\Products;
+use App\Models\Promotions;
 
 class CreatePromotion extends Component
 {
+    use WithFileUploads;
+
     public array $hasSelectProduct = [];
     public $titulo = "";
     public $status = "";
@@ -16,6 +18,7 @@ class CreatePromotion extends Component
     public $percentage = "";
     public $start_date = "";
     public $end_date = "";
+    public $image = "";
     public $showSuccessMessage = false;
 
     public function selectProdPromotion($productReference)
@@ -34,11 +37,13 @@ class CreatePromotion extends Component
         }
         return;
     }
+
     public function removeProduct($index)
     {
         unset($this->hasSelectProduct[$index]);
         $this->hasSelectProduct = array_values($this->hasSelectProduct); // Reindexa o array
     }
+
     public function save()
     {
         $this->validate([
@@ -49,24 +54,25 @@ class CreatePromotion extends Component
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'hasSelectProduct' => 'required|array|min:1',
+            'image' => 'required',
         ]);
-
         $relatedProducts = [];
         foreach ($this->hasSelectProduct as $product) {
             Products::where('id', $product['id'])
                 ->update([
                     'group_promotion' => 'True',
-                    'sale' => $product['sale'],
+                    'sale' => $this->percentage,
                 ]);
-    
             $relatedProducts[] = [
                 'id' => $product['id'],
                 'reference' => $product['reference']
             ];
         }
-        // dd($this->description,$this->status,$this->titulo,$this->percentage,$this->start_date,$this->end_date);
-        // dd(json_encode($relatedProducts));
-        promotions::create([
+
+        $imageContent = file_get_contents($this->image->getRealPath());
+        $imageBase64 = base64_encode($imageContent);
+
+        Promotions::create([
             'title' => $this->titulo,
             'status' => $this->status,
             'description' => $this->description,
@@ -74,11 +80,11 @@ class CreatePromotion extends Component
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'related_products' => json_encode($relatedProducts),
+            'image_card' => $imageBase64,
         ]);
 
-        
         $this->showSuccessMessage = true;
-        $this->reset(['titulo', 'status', 'description', 'percentage', 'start_date', 'end_date', 'hasSelectProduct']);
+        return redirect()->route('create-promotion')->with('message', 'Produto criado com sucesso!')->with('status', 'success');
     }
 
     public function render()

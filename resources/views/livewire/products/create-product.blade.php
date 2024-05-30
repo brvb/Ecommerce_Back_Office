@@ -82,20 +82,140 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
+                                <div class="form-group text-left">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control" id="inputGroupFile01" wire:model.prevent='image'>
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
                                     </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="form-control" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                    @error('image')  <span class="text-danger">O campo Media do produto é obrigatório.</span> @enderror
                                 </div>
+                            </div>
+                             <div class="col-6">
+                                <div wire:loading wire:target="image">
+                                    Carregando...
+                                </div>
+                                <img wire:loading.remove src="{{ $image ? $image->temporaryUrl() : '' }}" class="img-fluid">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Variantes</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Size">Tamanho</label>
+                                    <input type="text" class="form-control" id="Size" value=""
+                                        wire:model.defer="VariantsSize">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Color">Cores</label>
+                                    <input type="text" class="form-control" id="Color" value=""
+                                        wire:model.defer="VariantsColor">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Weight">Peso</label>
+                                    <input type="text" class="form-control" id="Weight" value=""
+                                        wire:model.defer="VariantsWeight">
+                                </div>
+                            </div>
+                            
+                            <div class="col-2">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Amount">Amount</label>
+                                    <input type="text" class="form-control" id="Amount" value="" wire:model.defer="VariantsAmount">
+
+                                </div>
+                            </div>
+                             <div class="col-10">
+                                <div class="form-group text-left">
+                                    <label class="floating-label" for="Media">Media</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
+                                <div class="form-group text-left">
+                                    <button class="btn btn-primary" wire:click='addVariants()'>
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            @if ($hasVariantsProduct)
+                                @foreach ($hasVariantsProduct as $index => $product)
+                                    <div class="col-12" id="variant-{{ $index }}">
+                                     
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <hr>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group text-left">
+                                                    <label class="floating-label" for="Size">Tamanho</label>
+                                                    <input type="text" class="form-control" id="Size" value="{{ $product['size'] }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group text-left">
+                                                    <label class="floating-label" for="Color">Cores</label>
+                                                    <input type="text" class="form-control" id="Color" value="{{ $product['color'] }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group text-left">
+                                                    <label class="floating-label" for="Weight">Peso</label>
+                                                    <input type="text" class="form-control" id="Weight" value="{{ $product['weight'] }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="form-group text-left">
+                                                    <label class="floating-label" for="Amount">Amount</label>
+                                                    <input type="text" class="form-control" id="Amount" value="{{ $product['amount'] }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="form-group text-left">
+                                                    <label class="floating-label" for="Media">Media</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="form-control" id="Media">
+                                                            <label class="custom-file-label" for="Media">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
+                                                <div class="form-group text-left">
+                                                    <button class="btn btn-primary" wire:click='removeVariants({{ $index }})'>
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
         </div>
 
     </div>
@@ -187,38 +307,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Variantes</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Size">Tamanho</label>
-                                    <input type="text" class="form-control" id="Size" value=""
-                                        wire:model.defer="size">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Color">Cores</label>
-                                    <input type="text" class="form-control" id="Color" value=""
-                                        wire:model.defer="color">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Weight">Peso</label>
-                                    <input type="text" class="form-control" id="Weight" value=""
-                                        wire:model.defer="peso">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 

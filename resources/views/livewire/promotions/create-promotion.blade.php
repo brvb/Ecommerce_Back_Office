@@ -52,7 +52,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group text-left">
-                                    <label for="status">Select Product</label>
+                                    
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <label for="status">Select Product</label>
+                                        <a href="{{ route('create-product') }}" class="text-primary mb-1">ADD NEW PRODUCT</a>
+                                    </div>
                                     <select class="form-control" id="status" name="status" wire:change='selectProdPromotion($event.target.value)' wire:model.defer='selectedProduct'>
                                         <option value="">Select Product</option>
                                         @foreach ($products as $product)
@@ -99,26 +103,35 @@
                 </div>
             </div>
             <div class="col-12">
-                <div class="card">
+               <div class="card">
                     <div class="card-header">
                         <h5>Media</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
+                                <div class="form-group text-left">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control" id="inputGroupFile01" wire:model.prevent='image'>
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                            
+                                        </div>
+                                    
                                     </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="form-control" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                @error('image')  <span class="text-danger">O campo Choose file da promoçao é obrigatório.</span> @enderror
                                 </div>
+                            </div>
+                            <div class="col-6">
+                                <div wire:loading wire:target="image">
+                                    Carregando...
+                                </div>
+                                <img wire:loading.remove src="{{ $image ? $image->temporaryUrl() : '' }}" class="img-fluid">
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

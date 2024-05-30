@@ -4,6 +4,8 @@ namespace App\Livewire\Products;
 
 use App\Models\Category;
 use App\Models\Products;
+use App\Models\VariantsProducts;
+
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -21,7 +23,35 @@ class CreateProduct extends Component
     public $stock;
     public $category;
     public $status;
+    public $image = "";
     public $showSuccessMessage = false;
+        
+    // Variantes
+    public array $hasVariantsProduct = [];
+    public $VariantsColor = "";
+    public $VariantsSize = "";
+    public $VariantsWeight = "";
+    public $VariantsAmount = "";
+    
+    public function addVariants()
+    {
+        if ($this->VariantsColor && $this->VariantsSize && $this->VariantsWeight) {
+            $this->hasVariantsProduct[] = [
+                'color' => $this->VariantsColor,
+                'size' => $this->VariantsSize,
+                'weight' => $this->VariantsWeight,
+                'amount' => $this->VariantsAmount,
+            ];
+            $this->VariantsColor = "";
+            $this->VariantsSize = "";
+            $this->VariantsWeight = "";
+            $this->VariantsAmount = "";
+        }
+    }
+    public function removeVariants($index)
+    {
+        unset($this->hasVariantsProduct[$index]);
+    }
 
     public function save()
     {
@@ -37,7 +67,11 @@ class CreateProduct extends Component
             'stock' => 'required',
             'category' => 'required',
             'status' => 'required',
+            'image' => 'required',
         ]);
+
+        $imageContent = file_get_contents($this->image->getRealPath());
+        $imageBase64 = base64_encode($imageContent);
 
         Products::create([
             'reference' => $this->reference,
@@ -50,7 +84,18 @@ class CreateProduct extends Component
             'stock' => $this->stock,
             'idcategory' => $this->category,
             'status' => $this->status,
+            'image_file' => $imageBase64,
         ]);
+        foreach ($this->hasVariantsProduct as $Variant) {
+            VariantsProducts::create([
+                'reference' => $this->barcode,
+                'color' => $Variant["color"],
+                'size' => $Variant["size"],
+                'weight' => $Variant["weight"],
+                'amount' => $Variant["amount"],
+            ]);
+        }
+
 
         $this->showSuccessMessage = true;
 
