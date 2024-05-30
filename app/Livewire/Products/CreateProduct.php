@@ -32,7 +32,7 @@ class CreateProduct extends Component
     public $VariantsSize = "";
     public $VariantsWeight = "";
     public $VariantsAmount = "";
-    
+
     public function addVariants()
     {
         if ($this->VariantsColor && $this->VariantsSize && $this->VariantsWeight) {
@@ -88,7 +88,7 @@ class CreateProduct extends Component
         ]);
         foreach ($this->hasVariantsProduct as $Variant) {
             VariantsProducts::create([
-                'reference' => $this->barcode,
+                'reference' => $this->reference,
                 'color' => $Variant["color"],
                 'size' => $Variant["size"],
                 'weight' => $Variant["weight"],
