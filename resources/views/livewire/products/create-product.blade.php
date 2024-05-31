@@ -18,7 +18,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="Titulo">Nome do Produto</label>
                                     <input type="text" class="form-control" id="Titulo"
@@ -51,16 +51,6 @@
 
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Barcode">Barcode</label>
-                                    <input type="text" class="form-control" id="Barcode" value=""
-                                        wire:model.defer="barcode">
-                                    @error('barcode')
-                                        <span class="text-danger">O campo Barcode é obrigatório.</span>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="col-12">
                                 <div class="form-group text-left">
                                     <label class="floating-label" for="Paragrafo">Descrição</label>
@@ -74,194 +64,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Media</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group text-left">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="form-control" id="inputGroupFile01" wire:model.prevent='image'>
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-                                    @error('image')  <span class="text-danger">O campo Media do produto é obrigatório.</span> @enderror
-                                </div>
-                            </div>
-                             <div class="col-6">
-                                <div wire:loading wire:target="image">
-                                    Carregando...
-                                </div>
-                                <img wire:loading.remove src="{{ $image ? $image->temporaryUrl() : '' }}" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Variantes</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Size">Tamanho</label>
-                                    <input type="text" class="form-control" id="Size" value=""
-                                        wire:model.defer="VariantsSize">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Color">Cores</label>
-                                    <input type="text" class="form-control" id="Color" value=""
-                                        wire:model.defer="VariantsColor">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Weight">Peso</label>
-                                    <input type="text" class="form-control" id="Weight" value=""
-                                        wire:model.defer="VariantsWeight">
-                                </div>
-                            </div>
-                            
-                            <div class="col-2">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Amount">Amount</label>
-                                    <input type="text" class="form-control" id="Amount" value="" wire:model.defer="VariantsAmount">
-
-                                </div>
-                            </div>
-                             <div class="col-10">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Media">Media</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="form-control" id="inputGroupFile01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
-                                <div class="form-group text-left">
-                                    <button class="btn btn-primary" wire:click='addVariants()'>
-                                        +
-                                    </button>
-                                </div>
-                            </div>
-                            @if ($hasVariantsProduct)
-                                @foreach ($hasVariantsProduct as $index => $product)
-                                    <div class="col-12" id="variant-{{ $index }}">
-                                     
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <hr>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="form-group text-left">
-                                                    <label class="floating-label" for="Size">Tamanho</label>
-                                                    <input type="text" class="form-control" id="Size" value="{{ $product['size'] }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="form-group text-left">
-                                                    <label class="floating-label" for="Color">Cores</label>
-                                                    <input type="text" class="form-control" id="Color" value="{{ $product['color'] }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="form-group text-left">
-                                                    <label class="floating-label" for="Weight">Peso</label>
-                                                    <input type="text" class="form-control" id="Weight" value="{{ $product['weight'] }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-2">
-                                                <div class="form-group text-left">
-                                                    <label class="floating-label" for="Amount">Amount</label>
-                                                    <input type="text" class="form-control" id="Amount" value="{{ $product['amount'] }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="form-group text-left">
-                                                    <label class="floating-label" for="Media">Media</label>
-                                                    <div class="input-group">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="form-control" id="Media">
-                                                            <label class="custom-file-label" for="Media">Choose file</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
-                                                <div class="form-group text-left">
-                                                    <button class="btn btn-primary" wire:click='removeVariants({{ $index }})'>
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
   
         </div>
 
     </div>
     <div class="col-md-5">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Preços</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Price">Preço Base</label>
-                                    <input type="text" class="form-control" id="Price" value=""
-                                        wire:model.defer="price">
-                                    @error('price')
-                                        <span class="text-danger">O campo Referência é obrigatório.</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Sale">Desconto</label>
-                                    <input type="text" class="form-control" id="Sale" value=""
-                                        wire:model.defer="sale">
-                                    @error('sale')
-                                        <span class="text-danger">O campo Desconto é obrigatório.</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group text-left">
-                                    <label class="floating-label" for="Stock">Stock</label>
-                                    <input type="text" class="form-control" id="Stock" value=""
-                                        wire:model.defer="stock">
-                                    @error('stock')
-                                        <span class="text-danger">O campo Stock é obrigatório.</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -309,8 +118,164 @@
             </div>
             
         </div>
+        
     </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Variantes</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Size">Tamanho</label>
+                            <input type="text" class="form-control" id="Size" value=""
+                                wire:model.defer="VariantsSize">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Color">Cores</label>
+                            <input type="text" class="form-control" id="Color" value=""
+                                wire:model.defer="VariantsColor">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Weight">Peso</label>
+                            <input type="text" class="form-control" id="Weight" value=""
+                                wire:model.defer="VariantsWeight">
+                        </div>
+                    </div>
+                    
+                    <div class="col-2">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Stock">Stock</label>
+                            <input type="text" class="form-control" id="Stock" value="" wire:model.defer="VariantsStock">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Media">Media</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="form-control" id="inputGroupFile01" wire:model="image">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-2">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="Amount">Preço</label>
+                            <input type="text" class="form-control" id="Amount" value="" wire:model.defer="VariantsPrice">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group text-left">
+                            <label class="floating-label" for="sale">Sale</label>
+                            <input type="text" class="form-control" id="sale" value="" wire:model.defer="VariantsSale">
+                        </div>
+                    </div>
+                    <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
+                        <div class="form-group text-left">
+                            <button class="btn btn-primary" wire:click='addVariants()'>
+                                +
+                            </button>
+                        </div>
+                    </div>
+                    @if ($hasImageProduct)
+                        @foreach ($hasImageProduct as $index => $image)
+                            <div class="col-2">
+                                <div wire:loading wire:target="hasImageProduct">
+                                    Carregando...
+                                </div>
+                                <img wire:loading.remove src="{{ $image['image_file'] ? $image['image_file']->temporaryUrl() : '' }}" class="img-fluid">
+                            </div>
+                        @endforeach
+                    @endif
 
+                    @if ($hasVariantsProduct)
+                        @foreach ($hasVariantsProduct as $index => $product)
+                            <div class="col-12" id="variant-{{ $index }}">
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="Size">Tamanho</label>
+                                            <input type="text" class="form-control" id="Size" value="{{ $product['size'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="Color">Cores</label>
+                                            <input type="text" class="form-control" id="Color" value="{{ $product['color'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="Weight">Peso</label>
+                                            <input type="text" class="form-control" id="Weight" value="{{ $product['weight'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="stock">Stock</label>
+                                            <input type="text" class="form-control" id="stock" value="{{ $product['stock'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="Media">Media</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="form-control" id="Media">
+                                                    <label class="custom-file-label" for="Media">Choose file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="price">Preço</label>
+                                            <input type="text" class="form-control" id="price" value="{{ $product['price'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group text-left">
+                                            <label class="floating-label" for="Sale">Sale</label>
+                                            <input type="text" class="form-control" id="Sale" value="{{ $product['sale'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-2" style="display: flex;align-items: flex-end;justify-content: flex-end;">
+                                        <div class="form-group text-left">
+                                            <button class="btn btn-primary" wire:click='removeVariants({{ $index }})'>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    @if ($product['imageArry'])
+                                        @foreach ($product['imageArry'] as $index => $image)
+                                            <div class="col-2">
+                                             
+                                                <img  src="{{ $image['image_file'] ? $image['image_file']->temporaryUrl() : '' }}" class="img-fluid">
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-12">
         <div class="row">
             <div class="col-12">

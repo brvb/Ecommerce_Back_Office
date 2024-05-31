@@ -97,7 +97,9 @@
                                 <td>{{ $product->price }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{ $product->id}}"><i class="fas fa-pen"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="fas fa-file-alt"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary">+</button>
+
                                     <div class="modal fade bd-example-modal-lg{{ $product->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
